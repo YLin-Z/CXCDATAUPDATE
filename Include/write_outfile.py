@@ -28,6 +28,9 @@ def write_one(in_name,out_name,pathout,sheet_in):
 def update_out_sheet_time(path,endtime):
     sheet_out = pd.read_excel(path, sheet_name=1)
     if sheet_out.iloc[-1]['时间'] < endtime:
-        print('111')
+        print(sheet_out.iloc[-1]['时间'])
+        df = pd.DataFrame({'时间':['2021-01-25 08:00:00','2021-01-25 09:00:00','2021-01-25 100:00:00']})
+        sheet_out = pd.concat([sheet_out,df])
+        sheet_out.to_excel('test.xls')
     else:
         print('不需要更新'+path+'时间')
