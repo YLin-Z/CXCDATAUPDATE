@@ -2,12 +2,12 @@ import pandas as pd
 import os
 
 def updaterow(row,numofcol):
-    i=0
-    while i<=numofcol:
-        print(i)
-        print(row[i])
+    i=1
+    print('-----------------------------------------------------------------')
+    print(type(row))
+    while i<numofcol-1:
+        print(row[1][i])
         i=i+1
-
 
 
 
@@ -17,9 +17,9 @@ def updatedata(path):
     df = pd.read_excel(path, sheet_name=0)
     numofcol,numofrow=df.shape
     for row in df.iteritems():
-        # print('正在处理:')
-        # print(row[0])
-        updaterow(row,numofcol)  # 每一列填充空位
+         updaterow(row,numofcol)  # 每一列填充空位
+
+
 
 
 
