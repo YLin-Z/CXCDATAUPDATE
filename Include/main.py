@@ -1,26 +1,28 @@
 import pandas as pd
 import os
-from read_infile import read_infile
-from write_outfile import write_outfile
+
+def updaterow(row,numofcol):
+    i=0
+    while i<=numofcol:
+        print(i)
+        print(row[i])
+        i=i+1
 
 
-def upmissvalue(pathout):
-    pass
 
-def dropdown(pathout):
-    pass
+
+
+# 填充空的数
+def updatedata(path):
+    df = pd.read_excel(path, sheet_name=0)
+    numofcol,numofrow=df.shape
+    for row in df.iteritems():
+        # print('正在处理:')
+        # print(row[0])
+        updaterow(row,numofcol)  # 每一列填充空位
+
 
 
 if __name__ == '__main__':
-    pathin = "d:/IN_cxcdata"#待录入文件的路径
-    pathout = {'dongsha':"d:/OUT_cxcdata/dongsha.xls",
-               'nanjiaoshaluo':"d:/OUT_cxcdata/shaluo_nanjiao.xls"}  # 目标文件的路径
-    #读取待录入的文件
-    sheet = read_infile(pathin)
-    # 将每一列写入对的位置
-    write_outfile(sheet,pathout)
-    #实现原下拉功能的计算时流量
-    dropdown(pathout)
-    #补全缺失数据
-    upmissvalue(pathout)
-    #判断有没有流量计改变流向
+    path = "D:/CXCDATA/yibanyuanchuanbiao.xls"#待录入文件的路径
+    updatedata(path)
